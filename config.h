@@ -5,7 +5,9 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "mono:pixelsize=14:antialias=true:autohint=true";
+/* static char *font = "mono:pixelsize=14:antialias=true:autohint=true"; */
+/* static char *font = "DejaVuSansMono Nerd Font:pixelsize=14:antialias=true:autohint=true"; */
+static char *font = "mplus Nerd Font Mono:pixelsize=14:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -85,38 +87,50 @@ unsigned int tabspaces = 8;
 /* bg opacity */
 unsigned int alpha = 0xed;
 
+/* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	"#073642",  /*  0: black    */
-	"#dc322f",  /*  1: red      */
-	"#859900",  /*  2: green    */
-	"#b58900",  /*  3: yellow   */
-	"#268bd2",  /*  4: blue     */
-	"#d33682",  /*  5: magenta  */
-	"#2aa198",  /*  6: cyan     */
-	"#eee8d5",  /*  7: white    */
-	"#002b36",  /*  8: brblack  */
-	"#cb4b16",  /*  9: brred    */
-	"#586e75",  /* 10: brgreen  */
-	"#657b83",  /* 11: bryellow */
-	"#839496",  /* 12: brblue   */
-	"#6c71c4",  /* 13: brmagenta*/
-	"#93a1a1",  /* 14: brcyan   */
-	"#fdf6e3",  /* 15: brwhite  */
-	/* more colors can be added after 255 to use with DefaultXX */
-	"black",   /* 256 -> bg */
-	"#00cc00", /* 257 -> fg */
-    "magenta"  /* 258 -> cursor */
-};
 
+  /* 8 normal colors */
+  [0] = "#000000", /* black   */
+  [1] = "#6b6b6b", /* red     */
+  [2] = "#c4c4c4", /* green   */
+  [3] = "#b3b3b3", /* yellow  */
+  [4] = "#999999", /* blue    */
+  [5] = "#717171", /* magenta */
+  [6] = "#8a8a8a", /* cyan    */
+  [7] = "#b5cabb", /* white   */
+
+  /* 8 bright colors */
+  [8]  = "#202020", /* black   */
+  [9]  = "#464646", /* red     */
+  [10] = "#f8f8f8", /* green   */
+  [11] = "#eeeeee", /* yellow  */
+  [12] = "#7c7c7c", /* blue    */
+  [13] = "#adadad", /* magenta */
+  [14] = "#c0c0c0", /* cyan    */
+  [15] = "#99ac9e", /* white   */
+
+  /* special colors */
+  [256] = "#000000", /* background */
+  [257] = "#ffffff", /* foreground */
+};
 
 /*
  * Default colors (colorname index)
- * foreground, background, cursor, reverse cursor
+ * foreground, background, cursor
  */
-unsigned int defaultfg = 12;
-unsigned int defaultbg = 257;
-static unsigned int defaultcs = 14;
+unsigned int defaultfg = 257;
+unsigned int defaultbg = 256;
+static unsigned int defaultcs = 257;
 static unsigned int defaultrcs = 15;
+
+/*
+ * Colors used, when the specific fg == defaultfg. So in reverse mode this
+ * will reverse too. Another logic would only make the simple feature too
+ * complex.
+ */
+static unsigned int defaultitalic = 7;
+static unsigned int defaultunderline = 7;
 
 /*
  * Default shape of cursor
@@ -131,7 +145,7 @@ static unsigned int cursorshape = 2;
  * Default columns and rows numbers
  */
 
-static unsigned int cols = 80;
+static unsigned int cols = 90;
 static unsigned int rows = 24;
 
 /*
@@ -196,6 +210,8 @@ MouseKey mkeys[] = {
 	/* button               mask            function        argument */
 	{ Button4,              ShiftMask,      kscrollup,      {.i =  1} },
 	{ Button5,              ShiftMask,      kscrolldown,    {.i =  1} },
+	{ Button4,              Mod1Mask,       zoom,           {.f = +1} },
+	{ Button5,              Mod1Mask,       zoom,           {.f = -1} },
 };
 
 /* Internal keyboard shortcuts. */
@@ -213,26 +229,24 @@ static Shortcut shortcuts[] = {
 	{ MODKEY|ShiftMask,     XK_Home,        zoomreset,      {.f =  0} },
 	{ ShiftMask,            XK_Insert,      clippaste,      {.i =  0} },
 	{ MODKEY|ShiftMask,     XK_Insert,      clippaste,      {.i =  0} },
-	{ MODKEY|ShiftMask,     XK_C,           clipcopy,       {.i =  0} },
-	{ MODKEY|ShiftMask,     XK_V,           clippaste,      {.i =  0} },
+	{ ControlMask|MODKEY,   XK_c,           clipcopy,       {.i =  0} },
+	{ ControlMask|MODKEY,   XK_v,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ MODKEY,               XK_Control_L,   iso14755,       {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 	{ MODKEY,               XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ MODKEY,               XK_Page_Down,   kscrolldown,    {.i = -1} },
-	{ MODKEY,            	XK_k,  		kscrollup,      {.i =  1} },
-	{ MODKEY,            	XK_j,   	kscrolldown,    {.i =  1} },
-	{ MODKEY,            	XK_Up,  	kscrollup,      {.i =  1} },
-	{ MODKEY,            	XK_Down,   	kscrolldown,    {.i =  1} },
-	{ MODKEY,	        XK_u,		kscrollup,      {.i = -1} },
-	{ MODKEY,  		XK_d,		kscrolldown,   	{.i = -1} },
-	{ MODKEY|ShiftMask,     XK_Up,          zoom,           {.f = +1} },
-	{ MODKEY|ShiftMask,     XK_Down,        zoom,           {.f = -1} },
-	{ MODKEY|ShiftMask,     XK_K,           zoom,           {.f = +1} },
-	{ MODKEY|ShiftMask,     XK_J,           zoom,           {.f = -1} },
-	{ MODKEY|ShiftMask,     XK_U,           zoom,           {.f = +2} },
-	{ MODKEY|ShiftMask,     XK_D,           zoom,           {.f = -2} },
+	{ MODKEY,              	XK_k,  		      kscrollup,      {.i =  1} },
+	{ MODKEY,              	XK_j,   	      kscrolldown,    {.i =  1} },
+	{ MODKEY,              	XK_Up,  	      kscrollup,      {.i =  1} },
+	{ MODKEY,              	XK_Down,      	kscrolldown,    {.i =  1} },
+	{ MODKEY,	              XK_u,		        kscrollup,      {.i = -1} },
+	{ MODKEY,  	          	XK_d,		        kscrolldown,   	{.i = -1} },
+	{ ControlMask|MODKEY,   XK_k,           zoom,           {.f = +1} },
+	{ ControlMask|MODKEY,   XK_j,           zoom,           {.f = -1} },
+	{ ControlMask|MODKEY,   XK_u,           zoom,           {.f = +2} },
+	{ ControlMask|MODKEY,   XK_d,           zoom,           {.f = -2} },
 };
 
 /*
