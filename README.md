@@ -1,10 +1,10 @@
-# Ahmed's build of st (aka suckless Terminal) with Monochrome theme
+# Ahmed's build of st (aka suckless\simple Terminal)
 
 Forked form [luck smith](https://github.com/LukeSmithxyz/st) which is Forked from [shiva](https://github.com/shiva/st), which is the [suckless terminal (st)](https://st.suckless.org/) with some additional features:
 
 + Copy to clipboard (C-M-c), and past from it (C-M-v)
 + Zoom in/out with C-M-(k/j) or (u/d) for larger intervals.
-+ Optional Monochrome colors, using [terminal.sexy](http://terminal.sexy/)
++ Optional colors, using [terminal.sexy](http://terminal.sexy/)
 
 The following additional bindings were added before I forked this:
 
