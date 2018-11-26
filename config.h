@@ -5,7 +5,6 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-
 static char *font = "DejaVu Sans Mono:pixelsize=14:antialias=true:autohint=true";
 static int borderpx = 2;
 
@@ -86,30 +85,31 @@ unsigned int tabspaces = 8;
 /* bg opacity */
 unsigned int alpha = 0xed;
 
-static const char *colorname[] = {
-                                  /* 8 normal colors */
-                                  [0] = "#000000", /* black   */
-                                  [1] = "#ff5555", /* red     */
-                                  [2] = "#50fa7b", /* green   */
-                                  [3] = "#f1fa8c", /* yellow  */
-                                  [4] = "#bd93f9", /* blue    */
-                                  [5] = "#ff79c6", /* magenta */
-                                  [6] = "#8be9fd", /* cyan    */
-                                  [7] = "#bbbbbb", /* white   */
+static const char *colorname[] =
+{
+   /* 8 normal colors */
+   [0] = "#000000", /* black   */
+   [1] = "#ff5555", /* red     */
+   [2] = "#50fa7b", /* green   */
+   [3] = "#f1fa8c", /* yellow  */
+   [4] = "#bd93f9", /* blue    */
+   [5] = "#ff79c6", /* magenta */
+   [6] = "#8be9fd", /* cyan    */
+   [7] = "#bbbbbb", /* white   */
 
-                                  /* 8 bright colors */
-                                  [8]  = "#44475a", /* black   */
-                                  [9]  = "#ff5555", /* red     */
-                                  [10] = "#50fa7b", /* green   */
-                                  [11] = "#f1fa8c", /* yellow  */
-                                  [12] = "#bd93f9", /* blue    */
-                                  [13] = "#ff79c6", /* magenta */
-                                  [14] = "#8be9fd", /* cyan    */
-                                  [15] = "#ffffff", /* white   */
+   /* 8 bright colors */
+   [8]  = "#44475a", /* black   */
+   [9]  = "#ff5555", /* red     */
+   [10] = "#50fa7b", /* green   */
+   [11] = "#f1fa8c", /* yellow  */
+   [12] = "#bd93f9", /* blue    */
+   [13] = "#ff79c6", /* magenta */
+   [14] = "#8be9fd", /* cyan    */
+   [15] = "#ffffff", /* white   */
 
-                                  /* special colors */
-                                  [256] = "#282a36", /* background */
-                                  [257] = "#f8f8f2", /* foreground */
+   /* special colors */
+   [256] = "#282a36", /* background */
+   [257] = "#f8f8f2", /* foreground */
 };
 
 
@@ -156,38 +156,38 @@ static unsigned int defaultattr = 11;
  * Xresources preferences to load at startup
  */
 ResourcePref resources[] =
-  {
-   { "font",         STRING,  &font },
-   { "color0",       STRING,  &colorname[0] },
-   { "color1",       STRING,  &colorname[1] },
-   { "color2",       STRING,  &colorname[2] },
-   { "color3",       STRING,  &colorname[3] },
-   { "color4",       STRING,  &colorname[4] },
-   { "color5",       STRING,  &colorname[5] },
-   { "color6",       STRING,  &colorname[6] },
-   { "color7",       STRING,  &colorname[7] },
-   { "color8",       STRING,  &colorname[8] },
-   { "color9",       STRING,  &colorname[9] },
-   { "color10",      STRING,  &colorname[10] },
-   { "color11",      STRING,  &colorname[11] },
-   { "color12",      STRING,  &colorname[12] },
-   { "color13",      STRING,  &colorname[13] },
-   { "color14",      STRING,  &colorname[14] },
-   { "color15",      STRING,  &colorname[15] },
-   { "background",   STRING,  &colorname[256] },
-   { "foreground",   STRING,  &colorname[257] },
-   { "cursorColor",  STRING,  &colorname[258] },
-   { "termname",     STRING,  &termname },
-   { "shell",        STRING,  &shell },
-   { "xfps",         INTEGER, &xfps },
-   { "actionfps",    INTEGER, &actionfps },
-   { "blinktimeout", INTEGER, &blinktimeout },
-   { "bellvolume",   INTEGER, &bellvolume },
-   { "tabspaces",    INTEGER, &tabspaces },
-   { "cwscale",      FLOAT,   &cwscale },
-   { "chscale",      FLOAT,   &chscale },
-   { "alpha",      INTEGER,   &alpha },
-  };
+{
+ { "font",         STRING,  &font },
+ { "color0",       STRING,  &colorname[0] },
+ { "color1",       STRING,  &colorname[1] },
+ { "color2",       STRING,  &colorname[2] },
+ { "color3",       STRING,  &colorname[3] },
+ { "color4",       STRING,  &colorname[4] },
+ { "color5",       STRING,  &colorname[5] },
+ { "color6",       STRING,  &colorname[6] },
+ { "color7",       STRING,  &colorname[7] },
+ { "color8",       STRING,  &colorname[8] },
+ { "color9",       STRING,  &colorname[9] },
+ { "color10",      STRING,  &colorname[10] },
+ { "color11",      STRING,  &colorname[11] },
+ { "color12",      STRING,  &colorname[12] },
+ { "color13",      STRING,  &colorname[13] },
+ { "color14",      STRING,  &colorname[14] },
+ { "color15",      STRING,  &colorname[15] },
+ { "background",   STRING,  &colorname[256] },
+ { "foreground",   STRING,  &colorname[257] },
+ { "cursorColor",  STRING,  &colorname[258] },
+ { "termname",     STRING,  &termname },
+ { "shell",        STRING,  &shell },
+ { "xfps",         INTEGER, &xfps },
+ { "actionfps",    INTEGER, &actionfps },
+ { "blinktimeout", INTEGER, &blinktimeout },
+ { "bellvolume",   INTEGER, &bellvolume },
+ { "tabspaces",    INTEGER, &tabspaces },
+ { "cwscale",      FLOAT,   &cwscale },
+ { "chscale",      FLOAT,   &chscale },
+ { "alpha",      INTEGER,   &alpha },
+};
 
 /*
  * Internal mouse shortcuts.
@@ -195,56 +195,56 @@ ResourcePref resources[] =
  */
 
 static MouseShortcut mshortcuts[] =
-  {
-   /* button               mask            string */
-   { Button4,              XK_NO_MOD,      "\031" },
-   { Button5,              XK_NO_MOD,      "\005" },
-  };
+{
+ /* button               mask            string */
+ { Button4,              XK_NO_MOD,      "\031" },
+ { Button5,              XK_NO_MOD,      "\005" },
+};
 
 /* Internal keyboard shortcuts. */
 #define MODKEY Mod1Mask
 #define TERMMOD (ControlMask|ShiftMask)
 
 MouseKey mkeys[] =
-  {
-   /* button               mask            function        argument */
-   { Button4,              ShiftMask,      kscrollup,      {.i =  1} },
-   { Button5,              ShiftMask,      kscrolldown,    {.i =  1} },
-   { Button4,              Mod1Mask,       zoom,           {.f = +1} },
-   { Button5,              Mod1Mask,       zoom,           {.f = -1} },
-  };
+{
+ /* button               mask            function        argument */
+ { Button4,              ShiftMask,      kscrollup,      {.i =  1} },
+ { Button5,              ShiftMask,      kscrolldown,    {.i =  1} },
+ { Button4,              Mod1Mask,       zoom,           {.f = +1} },
+ { Button5,              Mod1Mask,       zoom,           {.f = -1} },
+};
 
 
 static Shortcut shortcuts[] =
-  {
-   /* mask                 keysym          function        argument */
-   { XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
-   { ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
-   { ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
-   { XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-   { MODKEY|ShiftMask,     XK_Prior,       zoom,           {.f = +1} },
-   { MODKEY|ShiftMask,     XK_Next,        zoom,           {.f = -1} },
-   { MODKEY|ShiftMask,     XK_Home,        zoomreset,      {.f =  0} },
-   { ShiftMask,            XK_Insert,      clippaste,      {.i =  0} },
-   { MODKEY|ShiftMask,     XK_Insert,      clippaste,      {.i =  0} },
-   { ControlMask|MODKEY,   XK_c,           clipcopy,       {.i =  0} },
-   { ControlMask|MODKEY,   XK_v,           clippaste,      {.i =  0} },
-   { TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-   { MODKEY,               XK_Control_L,   iso14755,       {.i =  0} },
-   { ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-   { ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
-   { MODKEY,               XK_Page_Up,     kscrollup,      {.i = -1} },
-   { MODKEY,               XK_Page_Down,   kscrolldown,    {.i = -1} },
-   { MODKEY,                XK_k,            kscrollup,      {.i =  1} },
-   { MODKEY,                XK_j,           kscrolldown,    {.i =  1} },
-   { MODKEY,                XK_Up,          kscrollup,      {.i =  1} },
-   { MODKEY,                XK_Down,        kscrolldown,    {.i =  1} },
-   { MODKEY,                XK_u,            kscrollup,      {.i = -1} },
-   { MODKEY,                XK_d,            kscrolldown,     {.i = -1} },
-   { ControlMask|MODKEY,   XK_k,           zoom,           {.f = +1} },
-   { ControlMask|MODKEY,   XK_j,           zoom,           {.f = -1} },
-   { ControlMask|MODKEY,   XK_u,           zoom,           {.f = +2} },
-   { ControlMask|MODKEY,   XK_d,           zoom,           {.f = -2} },
+{
+ /* mask                 keysym          function        argument */
+ { XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
+ { ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
+ { ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
+ { XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
+ { MODKEY|ShiftMask,     XK_Prior,       zoom,           {.f = +1} },
+ { MODKEY|ShiftMask,     XK_Next,        zoom,           {.f = -1} },
+ { MODKEY|ShiftMask,     XK_Home,        zoomreset,      {.f =  0} },
+ { ShiftMask,            XK_Insert,      clippaste,      {.i =  0} },
+ { MODKEY|ShiftMask,     XK_Insert,      clippaste,      {.i =  0} },
+  { ControlMask|MODKEY,   XK_c,           clipcopy,       {.i =  0} },
+  { ControlMask|MODKEY,   XK_v,           clippaste,      {.i =  0} },
+  { TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+  { MODKEY,               XK_Control_L,   iso14755,       {.i =  0} },
+  { ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
+  { ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+  { MODKEY,               XK_Page_Up,     kscrollup,      {.i = -1} },
+  { MODKEY,               XK_Page_Down,   kscrolldown,    {.i = -1} },
+  { MODKEY,                XK_k,            kscrollup,      {.i =  1} },
+  { MODKEY,                XK_j,           kscrolldown,    {.i =  1} },
+  { MODKEY,                XK_Up,          kscrollup,      {.i =  1} },
+  { MODKEY,                XK_Down,        kscrolldown,    {.i =  1} },
+  { MODKEY,                XK_u,            kscrollup,      {.i = -1} },
+  { MODKEY,                XK_d,            kscrolldown,     {.i = -1} },
+  { ControlMask|MODKEY,   XK_k,           zoom,           {.f = +1} },
+  { ControlMask|MODKEY,   XK_j,           zoom,           {.f = -1} },
+  { ControlMask|MODKEY,   XK_u,           zoom,           {.f = +2} },
+  { ControlMask|MODKEY,   XK_d,           zoom,           {.f = -2} },
 };
 
 /*
