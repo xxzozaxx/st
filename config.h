@@ -87,23 +87,23 @@ float alpha = 0.9;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* solarized dark */
-	"#073642",  /*  0: black    */
-	"#dc322f",  /*  1: red      */
-	"#859900",  /*  2: green    */
-	"#b58900",  /*  3: yellow   */
-	"#268bd2",  /*  4: blue     */
-	"#d33682",  /*  5: magenta  */
-	"#2aa198",  /*  6: cyan     */
-	"#eee8d5",  /*  7: white    */
-	"#00171d",  /*  8: brblack  */ // EDIT: I change this color
-	"#cb4b16",  /*  9: brred    */
-	"#586e75",  /* 10: brgreen  */
-	"#657b83",  /* 11: bryellow */
-	"#9facad",  /* 12: brblue   */
-	"#6c71c4",  /* 13: brmagenta*/
-	"#93a1a1",  /* 14: brcyan   */
-	"#fdf6e3",  /* 15: brwhite  */
+	/* Dracuola for darck mode*/
+	"#000000",  /*  0: black    */
+	"#ff5555",  /*  1: red      */
+	"#50fa7b",  /*  2: green    */
+	"#f1fa8c",  /*  3: yellow   */
+	"#bd93f9",  /*  4: blue     */
+	"#ff79c6",  /*  5: magenta  */
+	"#8be9fd",  /*  6: cyan     */
+	"#bbbbbb",  /*  7: white    */
+	"#44475a",  /*  8: brblack  */ // EDIT: I change this color
+	"#ff5555",  /*  9: brred    */
+	"#50fa7b",  /* 10: brgreen  */
+	"#f1fa8c",  /* 11: bryellow */
+	"#bd93f9",  /* 12: brblue   */
+	"#ff79c6",  /* 13: brmagenta*/
+	"#8be9fd",  /* 14: brcyan   */
+	"#ffffff",  /* 15: brwhite  */
 };
 
 /* Terminal colors for alternate (light) palette */
@@ -121,7 +121,7 @@ static const char *altcolorname[] = {
 	"#cb4b16",  /*  9: brred    */
 	"#93a1a1",  /* 10: brgreen  */
 	"#839496",  /* 11: bryellow */
-	"#657b83",  /* 12: brblue   */
+	"#000000",  /* 12: brblue   */ // EDIT: Real black
 	"#6c71c4",  /* 13: brmagenta*/
 	"#586e75",  /* 14: brcyan   */
 	"#002b36",  /* 15: brwhite  */
