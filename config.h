@@ -5,11 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-<<<<<<< HEAD
 static char *font = "Luxi Mono:pixelsize=12:antialias=true:autohint=true";
-=======
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
->>>>>>> fb4e383bd98a52344c1480ed07b522c8e5d1d18f
 static int borderpx = 2;
 
 /*
@@ -86,7 +82,6 @@ char *termname = "xterm-256color"; // change st -> xterm to fix nvim color
  */
 unsigned int tabspaces = 8;
 
-<<<<<<< HEAD
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	"#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
@@ -109,35 +104,10 @@ static const char *colorname[] = {
 	/* more colors can be added after 255 to use with DefaultXX */
 	"black",   /* 256 -> bg */
 	"white",   /* 257 -> fg */
-=======
-/* bg opacity */
-float alpha = 0.9;
-
-/* Terminal colors (16 first used in escape sequence) */
-static const char *colorname[] = {
-	/* Dracuola for darck mode*/
-	"#000000",  /*  0: black    */
-	"#ff5555",  /*  1: red      */
-	"#50fa7b",  /*  2: green    */
-	"#f1fa8c",  /*  3: yellow   */
-	"#bd93f9",  /*  4: blue     */
-	"#ff79c6",  /*  5: magenta  */
-	"#8be9fd",  /*  6: cyan     */
-	"#bbbbbb",  /*  7: white    */
-	"#44475a",  /*  8: brblack  */ // EDIT: I change this color
-	"#ff5555",  /*  9: brred    */
-	"#50fa7b",  /* 10: brgreen  */
-	"#f1fa8c",  /* 11: bryellow */
-	"#bd93f9",  /* 12: brblue   */
-	"#ff79c6",  /* 13: brmagenta*/
-	"#8be9fd",  /* 14: brcyan   */
-	"#ffffff",  /* 15: brwhite  */
->>>>>>> fb4e383bd98a52344c1480ed07b522c8e5d1d18f
 };
 
 /* Terminal colors for alternate (light) palette */
 static const char *altcolorname[] = {
-<<<<<<< HEAD
 	"#fbf1c7", /* hard contrast: #f9f5d7 / soft contrast: #f2e5bc */
 	"#cc241d",
 	"#98971a",
@@ -158,25 +128,6 @@ static const char *altcolorname[] = {
 	/* more colors can be added after 255 to use with DefaultXX */
 	"black",   /* 256 -> bg */
 	"white",   /* 257 -> fg */
-=======
-	/* solarized light */
-	"#eee8d5",  /*  0: black    */
-	"#dc322f",  /*  1: red      */
-	"#859900",  /*  2: green    */
-	"#b58900",  /*  3: yellow   */
-	"#268bd2",  /*  4: blue     */
-	"#d33682",  /*  5: magenta  */
-	"#2aa198",  /*  6: cyan     */
-	"#073642",  /*  7: white    */
-	"#ffffdd",  /*  8: brblack  */ // EDIT: add plan9 ACME color
-	"#cb4b16",  /*  9: brred    */
-	"#93a1a1",  /* 10: brgreen  */
-	"#839496",  /* 11: bryellow */
-	"#000000",  /* 12: brblue   */ // EDIT: Real black
-	"#6c71c4",  /* 13: brmagenta*/
-	"#586e75",  /* 14: brcyan   */
-	"#002b36",  /* 15: brwhite  */
->>>>>>> fb4e383bd98a52344c1480ed07b522c8e5d1d18f
 };
 
 
@@ -184,17 +135,10 @@ static const char *altcolorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-<<<<<<< HEAD
 unsigned int defaultfg = 15;
 unsigned int defaultbg = 0;
 static unsigned int defaultcs = 15;
 static unsigned int defaultrcs = 0;
-=======
-unsigned int defaultfg = 12;
-unsigned int defaultbg = 8;
-static unsigned int defaultcs = 14;
-static unsigned int defaultrcs = 15;
->>>>>>> fb4e383bd98a52344c1480ed07b522c8e5d1d18f
 
 /*
  * Default shape of cursor
